@@ -81,7 +81,7 @@ public class MainWindow extends javax.swing.JFrame {
 		  double actualx = (paintbot.brush.x + newx) - paintbot.joint2.x;
 		  double actualy = (paintbot.brush.y + newy) - paintbot.joint2.y;
 		  double D = ((actualx*actualx)+(actualy*actualy)-(15625)) / (2*75*100);
-		  System.out.println(D);
+		  System.out.println(actualy/actualx);
 		  if(Math.abs(D)<1){
 			  paintbot.brush.x = (int) Math.round(paintbot.brush.x + newx);
 			  paintbot.brush.y = (int) Math.round(paintbot.brush.y + newy);
@@ -89,12 +89,11 @@ public class MainWindow extends javax.swing.JFrame {
 			  paintbot.joint3.y = (int) Math.round(100 * Math.sin(Math.atan(actualy/actualx) - Math.atan((75*Math.sqrt(1-(D*D))) / (100 + (75*D)))) + paintbot.joint2.y);
 		  }
 		  else if(newx!=0){
-			  int holder = (int) newx;
-			  paintbot.joint1.x += newx;
-			  System.out.println(paintbot.joint1.x);
-			  paintbot.joint2.x = (int) paintbot.joint2.x + holder;
-			  paintbot.joint3.x = (int) paintbot.joint3.x + holder;
-			  paintbot.brush.x = (int) paintbot.brush.x + holder;
+		   		 double tempjointpos = new Double((int)paintbot.joint1.x);
+		   		 paintbot.joint1.x = tempjointpos + newx;
+		   		 paintbot.joint2.x -= tempjointpos - paintbot.joint1.x ;
+		   		 paintbot.joint3.x -= tempjointpos - paintbot.joint1.x;
+		   		 paintbot.brush.x -= tempjointpos - paintbot.joint1.x;
 		  }
 	  }
 	  
@@ -180,11 +179,6 @@ public class MainWindow extends javax.swing.JFrame {
 	  @Override
 	  public void paint(Graphics g) {
 		 super.paintComponents(g);
-		 double tempjointpos = new Double((int)paintbot.joint1.x);
-		 paintbot.joint1.x = robotSlider.getValue()*3 + 150;
-		 paintbot.joint2.x -= tempjointpos - paintbot.joint1.x ;
-		 paintbot.joint3.x -= tempjointpos - paintbot.joint1.x;
-		 paintbot.brush.x -= tempjointpos - paintbot.joint1.x;
 	     drawBot(paintbot.joint1.x,paintbot.joint2.x,paintbot.joint2.y,paintbot.joint3.x,paintbot.joint3.y,paintbot.brush.x,paintbot.brush.y);
 	     drawSlider();
 	     drawPaint();
@@ -217,6 +211,11 @@ public class MainWindow extends javax.swing.JFrame {
 		@Override
 		public void stateChanged(ChangeEvent e) {
             JSlider source = (JSlider)e.getSource();
+   		 double tempjointpos = new Double((int)paintbot.joint1.x);
+   		 paintbot.joint1.x = robotSlider.getValue()*3 + 150;
+   		 paintbot.joint2.x -= tempjointpos - paintbot.joint1.x ;
+   		 paintbot.joint3.x -= tempjointpos - paintbot.joint1.x;
+   		 paintbot.brush.x -= tempjointpos - paintbot.joint1.x;
                 repaint();				
 		}
     }
