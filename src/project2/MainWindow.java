@@ -86,6 +86,9 @@ public class MainWindow extends javax.swing.JFrame {
 		   String total3 = String.valueOf(link3length);
 		   g.drawString(total3, 100, 200);
 	  }
+
+	  
+	  
 	  public void Rotate(double x, double y, double basex, double basey, double theta, int jointnum){
 		  double newX = basex + (x-basex)*Math.cos(theta) - (y-basey)*Math.sin(theta);
 		  double newY = basey + (x-basex)*Math.sin(theta) + (y-basey)*Math.cos(theta);
@@ -118,7 +121,9 @@ public class MainWindow extends javax.swing.JFrame {
 			  	paintbot.brush.y = (int)Math.round(newY);
 			  	break;
 		  }
-	  }
+	  }	  
+	  
+	  
 	  public void InitBot(){
 		  PaintBot newpaintbot = new PaintBot(300,300,300,450,300,550,300,625);
 		  paintbot = newpaintbot;
@@ -169,10 +174,6 @@ public class MainWindow extends javax.swing.JFrame {
 	     brushYLabel.setText(String.valueOf(paintbot.brush.x));
 	  }
 	  
-	  /*public static void main(String[] argv)
-	  {
-
-	  }*/
 /**
  *
  * @author rosbelsanroman
