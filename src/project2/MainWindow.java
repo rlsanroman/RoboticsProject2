@@ -220,25 +220,25 @@ public class MainWindow extends javax.swing.JFrame {
     
     private void rightButtonActionPerformed(java.awt.event.ActionEvent evt)
     {
-    	translate(paintbot.brush.x + 1, paintbot.brush.y);
+    	//translate(paintbot.brush.x + 1, paintbot.brush.y);
     	repaint();
     }
     
     private void leftButtonActionPerformed(java.awt.event.ActionEvent evt)
     {
-    	translate(paintbot.brush.x - 1, paintbot.brush.y)
+    	//translate(paintbot.brush.x - 1, paintbot.brush.y)
     	repaint();
     }
     
     private void upButtonActionPerformed(java.awt.event.ActionEvent evt)
     {
-    	translate(paintbot.brush.x, paintbot.brush.y - 1);
+    	//translate(paintbot.brush.x, paintbot.brush.y - 1);
     	repaint();
     }
     
     private void downButtonActionPerformed(java.awt.event.ActionEvent evt)
     {
-    	translate(paintbot.brush.x, paintbot.brush.y + 1);
+    	//translate(paintbot.brush.x, paintbot.brush.y + 1);
     	repaint();
     }
     
