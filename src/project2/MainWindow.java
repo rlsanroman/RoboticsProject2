@@ -250,39 +250,44 @@ public class MainWindow extends javax.swing.JFrame {
 		public void keyPressed(KeyEvent e) {
 			int code = e.getKeyCode();
 	    	if (code == KeyEvent.VK_UP)
-	    		System.out.println("UP");
-	    		//translate(paintbot.brush.x, paintbot.brush.y - 1);
+	    	{
+	    		translate(0, 5);
+	    	}
 	    	else if (code == KeyEvent.VK_DOWN)
-	    		System.out.println("DOWN");
-	    		//translate(paintbot.brush.x,paintbot.brush.y + 1);
+	    	{
+	    		translate(0,-5);
+	    	}
 	    	else if(code == KeyEvent.VK_RIGHT)
-	    		System.out.println("RIGHT");
-	    		//translate(paintbot.brush.x+1,paintbot.brush.y);
+	    	{
+	    		translate(5,0);
+	    	}
 	    	else if (code == KeyEvent.VK_LEFT)
-	    		System.out.println("LEFT");
-	    		//translate(paintbot.brush.x-1,paintbot.brush.y);
-	    	//else if (code == KeyEvent.VK_SPACE)
-	    		//paintButtonActionPerformed(null);
+	    	{
+	    		translate(-5,0);
+	    	}
+	    	else if (code == KeyEvent.VK_SPACE)
+	    	{
+	    		paintButton.requestFocusInWindow();
+	    		paintButton.doClick();
+	    		paintCanvasPanel.requestFocusInWindow();
+	    	}
+	    	repaint();
 		}
 
 		@Override
 		public void keyReleased(KeyEvent arg0) {
-			// TODO Auto-generated method stub
-			
 		}
 
 		@Override
 		public void keyTyped(KeyEvent arg0) {
-			// TODO Auto-generated method stub
-			if(arg0.getKeyCode() == KeyEvent.VK_SPACE)
-				paintButtonActionPerformed(null);
+			
 		}
 
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
 			// TODO Auto-generated method stub
 			paintCanvasPanel.requestFocusInWindow();
-			paintButton.requestFocusInWindow();
+			//paintButton.requestFocusInWindow();
 		}
     	
     }
@@ -500,7 +505,18 @@ public class MainWindow extends javax.swing.JFrame {
         paintCanvasPanel = new javax.swing.JPanel();
         keyListener = new keyEvent();
         paintCanvasPanel.addKeyListener(keyListener);
-        
+        upButton.setFocusable(false);
+        downButton.setFocusable(false);
+        rightButton.setFocusable(false);
+        leftButton.setFocusable(false);
+        clearButton.setFocusable(false);
+        robotSlider.setFocusable(false);
+        paintButton.setFocusable(true); //needs this to work, but only works if its focused on
+        j2LeftButton.setFocusable(false);
+        j2RightButton.setFocusable(false);
+        j3LeftButton.setFocusable(false);
+        j3RightButton.setFocusable(false);
+        paintButton.addActionListener(keyListener);
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(800, 600));
         setSize(new java.awt.Dimension(800, 600));
@@ -510,8 +526,6 @@ public class MainWindow extends javax.swing.JFrame {
 
         paintButton.setFont(paintButton.getFont().deriveFont(paintButton.getFont().getStyle() | java.awt.Font.BOLD, paintButton.getFont().getSize()+5));
         paintButton.setText("Paint");
-        paintButton.addKeyListener(keyListener);
-        paintButton.setFocusable(true);
         paintButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 paintButtonActionPerformed(evt);
