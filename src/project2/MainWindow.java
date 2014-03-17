@@ -76,15 +76,23 @@ public class MainWindow extends javax.swing.JFrame {
 	  public void translate(double newx,double newy){
 		  double actualx = (paintbot.brush.x + newx) - paintbot.joint2.x;
 		  double actualy = (paintbot.brush.y + newy) - paintbot.joint2.y;
-		  paintbot.brush.x = (int) Math.round(actualx + paintbot.joint2.x);
-		  paintbot.brush.y = (int) Math.round(actualy + paintbot.joint2.y);
-		  double D = ((newx*newx)+(newy*newx)-(100^2)-(75^2)) / (2*75*100);
-		  paintbot.joint3.x = (int) Math.round(100 * Math.cos(Math.atan(actualx/actualy) - Math.atan((75*Math.sqrt(1-(D*D))) / (100 + 75*(D)))) + paintbot.joint2.x);
-		  paintbot.joint3.y = (int) Math.round(100 * Math.sin(Math.atan(actualx/actualy) - Math.atan((75*Math.sqrt(1-(D*D))) / (100 + 75*(D)))) + paintbot.joint2.y);
-		  
-	  
+		  double D = ((actualx*actualx)+(actualy*actualy)-(15625)) / (2*75*100);
+		  System.out.println(D);
+		  if(Math.abs(D)<1){
+			  paintbot.brush.x = (int) Math.round(paintbot.brush.x + newx);
+			  paintbot.brush.y = (int) Math.round(paintbot.brush.y + newy);
+			  paintbot.joint3.x = (int) Math.round(100 * Math.cos(Math.atan(actualy/actualx) - Math.atan((75*Math.sqrt(1-(D*D))) / (100 + (75*D)))) + paintbot.joint2.x);
+			  paintbot.joint3.y = (int) Math.round(100 * Math.sin(Math.atan(actualy/actualx) - Math.atan((75*Math.sqrt(1-(D*D))) / (100 + (75*D)))) + paintbot.joint2.y);
+		  }
+		  else if(newx!=0){
+			  int holder = (int) newx;
+			  paintbot.joint1.x += newx;
+			  System.out.println(paintbot.joint1.x);
+			  paintbot.joint2.x = (int) paintbot.joint2.x + holder;
+			  paintbot.joint3.x = (int) paintbot.joint3.x + holder;
+			  paintbot.brush.x = (int) paintbot.brush.x + holder;
+		  }
 	  }
-	  
 	  
 	  public void drawLineLengths(int x, int x1, int y1, int x2, int y2, int x3, int y3){
 	       Graphics g = paintCanvasPanel.getGraphics();
@@ -234,25 +242,25 @@ public class MainWindow extends javax.swing.JFrame {
     
     private void rightButtonActionPerformed(java.awt.event.ActionEvent evt)
     {
-    	translate(1,0);
+    	translate(5,0);
     	repaint();
     }
     
     private void leftButtonActionPerformed(java.awt.event.ActionEvent evt)
     {
-    	translate(-1, 0);
+    	translate(-5, 0);
     	repaint();
     }
     
     private void upButtonActionPerformed(java.awt.event.ActionEvent evt)
     {
-    	translate(0, 1);
+    	translate(0, 5);
     	repaint();
     }
     
     private void downButtonActionPerformed(java.awt.event.ActionEvent evt)
     {
-    	translate(0, -1);
+    	translate(0, -5);
     	repaint();
     }
     
