@@ -240,6 +240,8 @@ public class MainWindow extends javax.swing.JFrame {
 	    	else if (code == KeyEvent.VK_LEFT)
 	    		System.out.println("LEFT");
 	    		//translate(paintbot.brush.x-1,paintbot.brush.y);
+	    	//else if (code == KeyEvent.VK_SPACE)
+	    		//paintButtonActionPerformed(null);
 		}
 
 		@Override
@@ -251,13 +253,15 @@ public class MainWindow extends javax.swing.JFrame {
 		@Override
 		public void keyTyped(KeyEvent arg0) {
 			// TODO Auto-generated method stub
-			
+			if(arg0.getKeyCode() == KeyEvent.VK_SPACE)
+				paintButtonActionPerformed(null);
 		}
 
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
 			// TODO Auto-generated method stub
 			paintCanvasPanel.requestFocusInWindow();
+			paintButton.requestFocusInWindow();
 		}
     	
     }
@@ -485,6 +489,8 @@ public class MainWindow extends javax.swing.JFrame {
 
         paintButton.setFont(paintButton.getFont().deriveFont(paintButton.getFont().getStyle() | java.awt.Font.BOLD, paintButton.getFont().getSize()+5));
         paintButton.setText("Paint");
+        paintButton.addKeyListener(keyListener);
+        paintButton.setFocusable(true);
         paintButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 paintButtonActionPerformed(evt);
