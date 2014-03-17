@@ -7,6 +7,10 @@
 package project2;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.Vector;
 
 import javax.swing.*;
@@ -218,6 +222,46 @@ public class MainWindow extends javax.swing.JFrame {
         }
     }
     
+    private class keyEvent implements KeyListener, ActionListener
+    {
+
+		@Override
+		public void keyPressed(KeyEvent e) {
+			int code = e.getKeyCode();
+	    	if (code == KeyEvent.VK_UP)
+	    		System.out.println("UP");
+	    		//translate(paintbot.brush.x, paintbot.brush.y - 1);
+	    	else if (code == KeyEvent.VK_DOWN)
+	    		System.out.println("DOWN");
+	    		//translate(paintbot.brush.x,paintbot.brush.y + 1);
+	    	else if(code == KeyEvent.VK_RIGHT)
+	    		System.out.println("RIGHT");
+	    		//translate(paintbot.brush.x+1,paintbot.brush.y);
+	    	else if (code == KeyEvent.VK_LEFT)
+	    		System.out.println("LEFT");
+	    		//translate(paintbot.brush.x-1,paintbot.brush.y);
+		}
+
+		@Override
+		public void keyReleased(KeyEvent arg0) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void keyTyped(KeyEvent arg0) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			// TODO Auto-generated method stub
+			paintCanvasPanel.requestFocusInWindow();
+		}
+    	
+    }
+    
     private void rightButtonActionPerformed(java.awt.event.ActionEvent evt)
     {
     	//translate(paintbot.brush.x + 1, paintbot.brush.y);
@@ -379,6 +423,7 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JButton downButton;
     private javax.swing.JButton upButton;
     private javax.swing.JButton leftButton;
+    private keyEvent keyListener;
     // End of variables declaration     
     
     
@@ -428,7 +473,9 @@ public class MainWindow extends javax.swing.JFrame {
         brushXLabel = new javax.swing.JLabel();
         brushYLabel = new javax.swing.JLabel();
         paintCanvasPanel = new javax.swing.JPanel();
-
+        keyListener = new keyEvent();
+        paintCanvasPanel.addKeyListener(keyListener);
+        
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(800, 600));
         setSize(new java.awt.Dimension(800, 600));
@@ -761,6 +808,9 @@ public class MainWindow extends javax.swing.JFrame {
 
         paintCanvasPanel.setBackground(new Color(0, 0, 0)); // background color
  
+        
+        paintCanvasPanel.setFocusable(true); //set focus for keyboard
+        
         javax.swing.GroupLayout paintCanvasPanelLayout = new javax.swing.GroupLayout(paintCanvasPanel);
         paintCanvasPanel.setLayout(paintCanvasPanelLayout);
         paintCanvasPanelLayout.setHorizontalGroup(
