@@ -218,6 +218,26 @@ public class MainWindow extends javax.swing.JFrame {
         }
     }
     
+    private void rightButtonActionPerformed(java.awt.event.ActionEvent evt)
+    {
+    	
+    }
+    
+    private void leftButtonActionPerformed(java.awt.event.ActionEvent evt)
+    {
+    	
+    }
+    
+    private void upButtonActionPerformed(java.awt.event.ActionEvent evt)
+    {
+    	
+    }
+    
+    private void downButtonActionPerformed(java.awt.event.ActionEvent evt)
+    {
+    	
+    }
+    
     private void JointButtonMousePressed(java.awt.event.MouseEvent evt)
     {
     	try
@@ -351,6 +371,10 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JLabel brushLabel;
     private javax.swing.JLabel brushXLabel;
     private javax.swing.JLabel brushYLabel;
+    private javax.swing.JButton rightButton;
+    private javax.swing.JButton downButton;
+    private javax.swing.JButton upButton;
+    private javax.swing.JButton leftButton;
     // End of variables declaration     
     
     
@@ -377,6 +401,10 @@ public class MainWindow extends javax.swing.JFrame {
         clearButton = new javax.swing.JButton();
         j2Label = new javax.swing.JLabel();
         j3Label = new javax.swing.JLabel();
+        upButton = new javax.swing.JButton();
+        downButton = new javax.swing.JButton();
+        leftButton = new javax.swing.JButton();
+        rightButton = new javax.swing.JButton();
         robotSlider = new javax.swing.JSlider();
         robotSlider.addChangeListener(new SliderListener());
         coordinatesPanel = new javax.swing.JPanel();
@@ -519,19 +547,57 @@ public class MainWindow extends javax.swing.JFrame {
         j2Label.setText("Joint 2");
 
         j3Label.setText("Joint 3");
+        upButton.setText("up");
+        upButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                upButtonActionPerformed(evt);
+            }
+        });
 
+        downButton.setText("dwn");
+        downButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                downButtonActionPerformed(evt);
+            }
+        });
+        leftButton.setText("lft");
+        leftButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                leftButtonActionPerformed(evt);
+            }
+        });
+
+
+        rightButton.setText("rgt");
+        rightButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rightButtonActionPerformed(evt);
+            }
+        });
+        
+        
         javax.swing.GroupLayout jointButtonsPanelLayout = new javax.swing.GroupLayout(jointButtonsPanel);
         jointButtonsPanel.setLayout(jointButtonsPanelLayout);
         jointButtonsPanelLayout.setHorizontalGroup(
             jointButtonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jointButtonsPanelLayout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jointButtonsPanelLayout.createSequentialGroup()
                 .addGroup(jointButtonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(j3Label)
-                    .addComponent(j2Label)
-                    .addComponent(j1Label))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jointButtonsPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jointButtonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(j3Label)
+                            .addComponent(j2Label)
+                            .addComponent(j1Label))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jointButtonsPanelLayout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(leftButton, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addGroup(jointButtonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jointButtonsPanelLayout.createSequentialGroup()
+                        .addGap(59, 59, 59)
+                        .addComponent(rightButton, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(upButton, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jointButtonsPanelLayout.createSequentialGroup()
                         .addComponent(j1LeftButton, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -544,7 +610,8 @@ public class MainWindow extends javax.swing.JFrame {
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jointButtonsPanelLayout.createSequentialGroup()
                             .addComponent(j2LeftButton, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(j2RightButton, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(j2RightButton, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(downButton, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         jointButtonsPanelLayout.setVerticalGroup(
@@ -565,7 +632,15 @@ public class MainWindow extends javax.swing.JFrame {
                     .addComponent(j1LeftButton)
                     .addComponent(j1RightButton)
                     .addComponent(j1Label))
-                .addContainerGap())
+                .addGap(18, 18, 18)
+                .addComponent(upButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jointButtonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(leftButton)
+                    .addComponent(rightButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(downButton)
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         coordinatesPanel.setLayout(new java.awt.GridLayout(5, 3));
@@ -651,13 +726,6 @@ public class MainWindow extends javax.swing.JFrame {
         controlPanel.setLayout(controlPanelLayout);
         controlPanelLayout.setHorizontalGroup(
             controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(robotSlider, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, controlPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(coordinatesPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jointButtonsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, controlPanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -666,6 +734,12 @@ public class MainWindow extends javax.swing.JFrame {
                         .addGap(8, 8, 8)
                         .addComponent(paintButton)))
                 .addGap(44, 44, 44))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, controlPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(coordinatesPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jointButtonsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         controlPanelLayout.setVerticalGroup(
             controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -675,11 +749,9 @@ public class MainWindow extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(clearButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(coordinatesPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jointButtonsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(robotSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(coordinatesPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jointButtonsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -704,8 +776,12 @@ public class MainWindow extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(paintCanvasPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(controlPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(9, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(controlPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(robotSlider, javax.swing.GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -715,7 +791,8 @@ public class MainWindow extends javax.swing.JFrame {
                     .addComponent(paintCanvasPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(controlPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 553, Short.MAX_VALUE)
-                        .addGap(35, 35, 35)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(robotSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
 
