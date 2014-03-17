@@ -280,7 +280,7 @@ public class MainWindow extends javax.swing.JFrame {
     }                                             
 
     private void j1RightButtonActionPerformed(java.awt.event.ActionEvent evt) {                                              
-	     Rotate(paintbot.joint2.x,paintbot.joint2.y,paintbot.joint1.x,paintbot.joint1.y,-0.05,1);
+	     //Rotate(paintbot.joint2.x,paintbot.joint2.y,paintbot.joint1.x,paintbot.joint1.y,-0.05,1);
 	     repaint();
 
     }
@@ -299,7 +299,7 @@ public class MainWindow extends javax.swing.JFrame {
     }                                            
 
     private void j1LeftButtonActionPerformed(java.awt.event.ActionEvent evt) {                                             
-	     Rotate(paintbot.joint2.x,paintbot.joint2.y,paintbot.joint1.x,paintbot.joint1.y,0.05,1);
+	     //Rotate(paintbot.joint2.x,paintbot.joint2.y,paintbot.joint1.x,paintbot.joint1.y,0.05,1);
 	     repaint();
     }
     
@@ -346,9 +346,9 @@ public class MainWindow extends javax.swing.JFrame {
     // Variables declaration - do not modify                     
     private javax.swing.JPanel controlPanel;
     private javax.swing.JPanel coordinatesPanel;
-    private javax.swing.JLabel j1Label;
-    private javax.swing.JButton j1LeftButton;
-    private javax.swing.JButton j1RightButton;
+    //private javax.swing.JLabel j1Label;
+    //private javax.swing.JButton j1LeftButton;
+    //private javax.swing.JButton j1RightButton;
     private javax.swing.JButton clearButton;
     private javax.swing.JLabel j2Label;
     private javax.swing.JButton j2LeftButton;
@@ -395,13 +395,13 @@ public class MainWindow extends javax.swing.JFrame {
         controlPanel = new javax.swing.JPanel();
         paintButton = new javax.swing.JToggleButton();
         jointButtonsPanel = new javax.swing.JPanel();
-        j1Label = new javax.swing.JLabel();
+        //j1Label = new javax.swing.JLabel();
         j3RightButton = new javax.swing.JButton();
         j2RightButton = new javax.swing.JButton();
         j2LeftButton = new javax.swing.JButton();
         j3LeftButton = new javax.swing.JButton();
-        j1RightButton = new javax.swing.JButton();
-        j1LeftButton = new javax.swing.JButton();
+        //j1RightButton = new javax.swing.JButton();
+        //j1LeftButton = new javax.swing.JButton();
         clearButton = new javax.swing.JButton();
         j2Label = new javax.swing.JLabel();
         j3Label = new javax.swing.JLabel();
@@ -444,7 +444,7 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
 
-        j1Label.setText("Joint 1");
+        //j1Label.setText("Joint 1");
 
         j3RightButton.setText(">");
         j3RightButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -514,39 +514,39 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
 
-        j1RightButton.setText(">");
-        j1RightButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-            	jointClicked = "j1r";
-                JointButtonMousePressed(evt);
-            }
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-            	jointClicked = "j1r";
-                JointButtonMouseReleased(evt);
-            }
-        });
-        j1RightButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                j1RightButtonActionPerformed(evt);
-            }
-        });
-
-        j1LeftButton.setText("<");
-        j1LeftButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-            	jointClicked = "j1l";
-                JointButtonMousePressed(evt);
-            }
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-            	jointClicked = "j1l";
-                JointButtonMouseReleased(evt);
-            }
-        });
-        j1LeftButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                j1LeftButtonActionPerformed(evt);
-            }
-        });
+//        j1RightButton.setText(">");
+//        j1RightButton.addMouseListener(new java.awt.event.MouseAdapter() {
+//            public void mousePressed(java.awt.event.MouseEvent evt) {
+//            	jointClicked = "j1r";
+//                JointButtonMousePressed(evt);
+//            }
+//            public void mouseReleased(java.awt.event.MouseEvent evt) {
+//            	jointClicked = "j1r";
+//                JointButtonMouseReleased(evt);
+//            }
+//        });
+//        j1RightButton.addActionListener(new java.awt.event.ActionListener() {
+//            public void actionPerformed(java.awt.event.ActionEvent evt) {
+//                j1RightButtonActionPerformed(evt);
+//            }
+//        });
+//
+//        j1LeftButton.setText("<");
+//        j1LeftButton.addMouseListener(new java.awt.event.MouseAdapter() {
+//            public void mousePressed(java.awt.event.MouseEvent evt) {
+//            	jointClicked = "j1l";
+//                JointButtonMousePressed(evt);
+//            }
+//            public void mouseReleased(java.awt.event.MouseEvent evt) {
+//            	jointClicked = "j1l";
+//                JointButtonMouseReleased(evt);
+//            }
+//        });
+//        j1LeftButton.addActionListener(new java.awt.event.ActionListener() {
+//            public void actionPerformed(java.awt.event.ActionEvent evt) {
+//                j1LeftButtonActionPerformed(evt);
+//            }
+//        });
 
         j2Label.setText("Joint 2");
 
@@ -564,7 +564,7 @@ public class MainWindow extends javax.swing.JFrame {
                 downButtonActionPerformed(evt);
             }
         });
-        leftButton.setText("lft");
+        leftButton.setText("left");
         leftButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 leftButtonActionPerformed(evt);
@@ -572,7 +572,7 @@ public class MainWindow extends javax.swing.JFrame {
         });
 
 
-        rightButton.setText("rgt");
+        rightButton.setText("right");
         rightButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rightButtonActionPerformed(evt);
@@ -590,8 +590,8 @@ public class MainWindow extends javax.swing.JFrame {
                         .addContainerGap()
                         .addGroup(jointButtonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(j3Label)
-                            .addComponent(j2Label)
-                            .addComponent(j1Label))
+                            .addComponent(j2Label))
+                            //.addComponent(j1Label))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jointButtonsPanelLayout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -602,10 +602,10 @@ public class MainWindow extends javax.swing.JFrame {
                         .addGap(59, 59, 59)
                         .addComponent(rightButton, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(upButton, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jointButtonsPanelLayout.createSequentialGroup()
-                        .addComponent(j1LeftButton, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(j1RightButton, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
+//                    .addGroup(jointButtonsPanelLayout.createSequentialGroup()
+//                        .addComponent(j1LeftButton, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+//                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+//                        .addComponent(j1RightButton, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jointButtonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jointButtonsPanelLayout.createSequentialGroup()
                             .addComponent(j3LeftButton, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -632,10 +632,10 @@ public class MainWindow extends javax.swing.JFrame {
                     .addComponent(j2LeftButton)
                     .addComponent(j2Label))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jointButtonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(j1LeftButton)
-                    .addComponent(j1RightButton)
-                    .addComponent(j1Label))
+//                .addGroup(jointButtonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+//                    .addComponent(j1LeftButton)
+//                    .addComponent(j1RightButton)
+//                    .addComponent(j1Label))
                 .addGap(18, 18, 18)
                 .addComponent(upButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
