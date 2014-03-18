@@ -336,6 +336,12 @@ public class MainWindow extends javax.swing.JFrame {
 	    		clearButton.doClick();
 	    		paintCanvasPanel.requestFocusInWindow();
 	    	}
+	    	else if (code == KeyEvent.VK_BACK_SPACE)
+	    	{
+	    		int size = paintinglocations.size();
+	    		if(size > 0)
+	    			paintinglocations.remove(paintinglocations.size()-1);
+	    	}
 	    	repaint();
 		}
 
@@ -579,7 +585,7 @@ public class MainWindow extends javax.swing.JFrame {
         downButton.setFocusable(false);
         rightButton.setFocusable(false);
         leftButton.setFocusable(false);
-        clearButton.setFocusable(true);
+        clearButton.setFocusable(false);
         robotSlider.setFocusable(false);
         paintButton.setFocusable(true); //needs this to work, but only works if its focused on
         j2LeftButton.setFocusable(false);
