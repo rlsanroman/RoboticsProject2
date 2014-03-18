@@ -85,25 +85,47 @@ public class MainWindow extends javax.swing.JFrame {
 		  double actualy = (paintbot.brush.y + newy) - paintbot.joint2.y;
 		  double D = ((actualx*actualx)+(actualy*actualy)-(15625)) / (2*75*100);
 		  System.out.println("X: " + actualx + " Y: " + actualy);
-		  if(Math.abs(D)<1 && paintbot.brush.x > paintbot.joint2.x){
+		  double elbowdownbrushx, elbowdownbrushy, elbowdownjointx, elbowdownjointy;
+		  double elbowupbrushx, elbowupbrushy, elbowupjointx, elbowupjointy;
+		  if(Math.abs(D)<1 && paintbot.brush.x+newx >= paintbot.joint2.x){
+			  /* WORKING ELBOW DOWN
 			  paintbot.brush.x = (int) Math.round(paintbot.brush.x + newx);
 			  paintbot.brush.y = (int) Math.round(paintbot.brush.y + newy);
 			  paintbot.joint3.x = (int) Math.round(100 * Math.cos(Math.atan(actualy/actualx) - Math.atan((75*Math.sqrt(1-(D*D))) / (100 + (75*D)))) + paintbot.joint2.x);
-			  paintbot.joint3.y = (int) Math.round(100 * Math.sin(Math.atan(actualy/actualx) - Math.atan((75*Math.sqrt(1-(D*D))) / (100 + (75*D)))) + paintbot.joint2.y);
+			  paintbot.joint3.y = (int) Math.round(100 * Math.sin(Math.atan(actualy/actualx) - Math.atan((75*Math.sqrt(1-(D*D))) / (100 + (75*D)))) + paintbot.joint2.y);*/
+			  // NEW TRIAL CODE: (ELBOW UP SEEMS TO WORK PERFECTLY)
+			  paintbot.brush.x = (int) Math.round(paintbot.brush.x + newx);
+			  paintbot.brush.y = (int) Math.round(paintbot.brush.y + newy);
+			  //elbowdownjointx = (int) Math.round(100 * Math.cos(Math.atan(actualy/actualx) - Math.atan((75*Math.sqrt(1-(D*D))) / (100 + (75*D)))) + paintbot.joint2.x);
+			  //elbowdownjointy = (int) Math.round(100 * Math.sin(Math.atan(actualy/actualx) - Math.atan((75*Math.sqrt(1-(D*D))) / (100 + (75*D)))) + paintbot.joint2.y);
+			  elbowupjointx = (int) Math.round(100 * Math.cos(Math.atan(actualy/actualx) - Math.atan((75*-Math.sqrt(1-(D*D))) / (100 + (75*D)))) + paintbot.joint2.x);
+			  elbowupjointy = (int) Math.round(100 * Math.sin(Math.atan(actualy/actualx) - Math.atan((75*-Math.sqrt(1-(D*D))) / (100 + (75*D)))) + paintbot.joint2.y);
+			  paintbot.joint3.x = elbowupjointx;
+			  paintbot.joint3.y = elbowupjointy;
 		  }
-		  else if(Math.abs(D)<1 && paintbot.brush.x <= paintbot.joint2.x){
+		  else if(Math.abs(D)<1 && paintbot.brush.x+newx < paintbot.joint2.x){
+			  /* WORKING ELBOW DOWN:
 			  paintbot.brush.x = (int) Math.round(paintbot.brush.x + newx);
 			  paintbot.brush.y = (int) Math.round(paintbot.brush.y + newy);
 			  paintbot.joint3.x = (int) Math.round(100 * Math.cos(3.14 + Math.atan(actualy/actualx) + Math.atan((75*Math.sqrt(1-(D*D))) / (100 + (75*D)))) + paintbot.joint2.x);
-			  paintbot.joint3.y = (int) Math.round(100 * Math.sin(3.14 + Math.atan(actualy/actualx) + Math.atan((75*Math.sqrt(1-(D*D))) / (100 + (75*D)))) + paintbot.joint2.y);			  
+			  paintbot.joint3.y = (int) Math.round(100 * Math.sin(3.14 + Math.atan(actualy/actualx) + Math.atan((75*Math.sqrt(1-(D*D))) / (100 + (75*D)))) + paintbot.joint2.y);*/			  
+			  paintbot.brush.x = (int) Math.round(paintbot.brush.x + newx);
+			  paintbot.brush.y = (int) Math.round(paintbot.brush.y + newy);
+			  //elbowdownjointx = (int) Math.round(100 * Math.cos(3.14 + Math.atan(actualy/actualx) - Math.atan((75*Math.sqrt(1-(D*D))) / (100 + (75*D)))) + paintbot.joint2.x);
+			  //elbowdownjointy = (int) Math.round(100 * Math.sin(3.14 + Math.atan(actualy/actualx) - Math.atan((75*Math.sqrt(1-(D*D))) / (100 + (75*D)))) + paintbot.joint2.y);
+			  elbowupjointx = (int) Math.round(100 * Math.cos(3.14 + Math.atan(actualy/actualx) - Math.atan((75*(-1)*Math.sqrt(1-(D*D))) / (100 + ((75)*D)))) + paintbot.joint2.x);
+			  elbowupjointy = (int) Math.round(100 * Math.sin(3.14 + Math.atan(actualy/actualx) - Math.atan((75*(-1)*Math.sqrt(1-(D*D))) / (100 + ((75)*D)))) + paintbot.joint2.y);
+			  paintbot.joint3.x = elbowupjointx;
+			  paintbot.joint3.y = elbowupjointy;
 		  }
-		  else if(newx!=0){
+		  else if(newx!=0 && (paintbot.joint1.x + newx < 450 && paintbot.joint1.x + newx > 150)){
 		   		 double tempjointpos = new Double((int)paintbot.joint1.x);
 		   		 paintbot.joint1.x = tempjointpos + newx;
 		   		 paintbot.joint2.x -= tempjointpos - paintbot.joint1.x ;
 		   		 paintbot.joint3.x -= tempjointpos - paintbot.joint1.x;
 		   		 paintbot.brush.x -= tempjointpos - paintbot.joint1.x;
 		  }
+		
 		 // System.out.println("X: " + actualx + "Y: " + actualy);
 
 	  }
