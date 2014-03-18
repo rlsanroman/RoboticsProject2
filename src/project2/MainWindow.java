@@ -11,6 +11,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseMotionListener;
+import java.awt.event.MouseEvent;
 import java.util.Vector;
 
 import javax.swing.*;
@@ -82,7 +84,7 @@ public class MainWindow extends javax.swing.JFrame {
 		  double actualx = (paintbot.brush.x + newx) - paintbot.joint2.x;
 		  double actualy = (paintbot.brush.y + newy) - paintbot.joint2.y;
 		  double D = ((actualx*actualx)+(actualy*actualy)-(15625)) / (2*75*100);
-		  System.out.println(actualx);
+		  System.out.println("X: " + actualx + " Y: " + actualy);
 		  if(Math.abs(D)<1 && paintbot.brush.x > paintbot.joint2.x){
 			  paintbot.brush.x = (int) Math.round(paintbot.brush.x + newx);
 			  paintbot.brush.y = (int) Math.round(paintbot.brush.y + newy);
@@ -102,7 +104,7 @@ public class MainWindow extends javax.swing.JFrame {
 		   		 paintbot.joint3.x -= tempjointpos - paintbot.joint1.x;
 		   		 paintbot.brush.x -= tempjointpos - paintbot.joint1.x;
 		  }
-		  System.out.println(actualx);
+		 // System.out.println("X: " + actualx + "Y: " + actualy);
 
 	  }
 	  
@@ -252,6 +254,32 @@ public class MainWindow extends javax.swing.JFrame {
         }
     }
     
+    private class mouseEvent 
+    		implements MouseMotionListener{
+
+		@Override
+		public void mouseDragged(MouseEvent evt) {
+			Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+			int height = screenSize.height;
+			
+			int mouseX = evt.getX();
+	        int mouseY = evt.getY();
+	        
+	        System.out.println("\nMouse position: (" + mouseX + "," + mouseY + ")");
+	        System.out.println("Brush position: (" + paintbot.brush.x + "," + paintbot.brush.y + ")");
+	        translate(mouseX - paintbot.brush.x, -1*(mouseY - height) - paintbot.brush.y );
+	        
+	    	repaint();			
+		}
+
+		@Override
+		public void mouseMoved(MouseEvent arg0) {
+			// TODO Auto-generated method stub
+			
+		}
+    	
+    }
+    
     private class keyEvent implements KeyListener, ActionListener
     {
 
@@ -393,6 +421,7 @@ public class MainWindow extends javax.swing.JFrame {
     	repaint();
     }
     
+    
     /**
      * @param args the command line arguments
      */
@@ -465,6 +494,7 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JButton upButton;
     private javax.swing.JButton leftButton;
     private keyEvent keyListener;
+    private mouseEvent mouseListener;
     // End of variables declaration     
     
     
@@ -515,7 +545,9 @@ public class MainWindow extends javax.swing.JFrame {
         brushYLabel = new javax.swing.JLabel();
         paintCanvasPanel = new javax.swing.JPanel();
         keyListener = new keyEvent();
+        mouseListener = new mouseEvent();
         paintCanvasPanel.addKeyListener(keyListener);
+        paintCanvasPanel.addMouseMotionListener(mouseListener);
         upButton.setFocusable(false);
         downButton.setFocusable(false);
         rightButton.setFocusable(false);
@@ -544,6 +576,7 @@ public class MainWindow extends javax.swing.JFrame {
         });
 
         //j1Label.setText("Joint 1");
+        
 
         j3RightButton.setText(">");
         j3RightButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -559,6 +592,7 @@ public class MainWindow extends javax.swing.JFrame {
         j3RightButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 j3RightButtonActionPerformed(evt);
+                System.out.println("j3rightbutton clicked");
             }
         });
 
