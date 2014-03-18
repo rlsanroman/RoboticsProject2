@@ -330,8 +330,12 @@ public class MainWindow extends javax.swing.JFrame {
 	    		paintButton.doClick();
 	    		paintCanvasPanel.requestFocusInWindow();
 	    	}
-	    	else if (code == KeyEvent.VK_A)
-	    		following = !following;
+	    	else if (code == KeyEvent.VK_ESCAPE)
+	    	{
+	    		clearButton.requestFocusInWindow();
+	    		clearButton.doClick();
+	    		paintCanvasPanel.requestFocusInWindow();
+	    	}
 	    	repaint();
 		}
 
@@ -570,11 +574,12 @@ public class MainWindow extends javax.swing.JFrame {
         mouseListener = new mouseEvent();
         paintCanvasPanel.addKeyListener(keyListener);
         paintCanvasPanel.addMouseMotionListener(mouseListener);
+        clearButton.addKeyListener(keyListener);
         upButton.setFocusable(false);
         downButton.setFocusable(false);
         rightButton.setFocusable(false);
         leftButton.setFocusable(false);
-        clearButton.setFocusable(false);
+        clearButton.setFocusable(true);
         robotSlider.setFocusable(false);
         paintButton.setFocusable(true); //needs this to work, but only works if its focused on
         j2LeftButton.setFocusable(false);
